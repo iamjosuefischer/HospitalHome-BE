@@ -12,7 +12,7 @@ class UsuarioListView(generics.ListAPIView):
     def list(self, request):
         print("GET a todos los Usuario")
         queryset = self.get_queryset()
-        serializer = UsuarioSerializer(queryset, many=True)
+        serializer = UsuarioSerializer(queryset, many = True)
         return Response(serializer.data)
 
 class UsuarioRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
