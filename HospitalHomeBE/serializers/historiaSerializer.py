@@ -4,5 +4,5 @@ from HospitalHomeBE.models.historia import Historia
 
 class HistoriaSerializer(serializers.ModelSerializer):
     class Meta:
-        models=Historia
+        model=Historia
         fields=['paciente', 'oximetria', 'f_respiratoria', 'f_cardiaca', 'temperatura', 'presion_arterial', 'glicemias', 'diagnostico' ,'cuidados']

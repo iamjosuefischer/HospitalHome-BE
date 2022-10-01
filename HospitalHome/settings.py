@@ -101,10 +101,10 @@ WSGI_APPLICATION = 'HospitalHome.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd81lhuf26rso5u',
-        'USER': 'rhwzwardhtdcrr',
-        'PASSWORD': '2b5b6adbb1ca8344ad26b17056d155a6937852d8383d76c1bf92cb61ef61c8b1',
-        'HOST': 'ec2-35-170-146-54.compute-1.amazonaws.com',
+        'NAME': 'd2uqtg4hvo94',
+        'USER': 'ifjfkctxlofqso',
+        'PASSWORD': 'b89d7bf8a8a63953145ef5a2b084c45e04bd6a36e90a361342951846672d48ff',
+        'HOST': 'ec2-3-209-39-2.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
