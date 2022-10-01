@@ -1,7 +1,8 @@
+from string import printable
 from rest_framework import serializers
 from HospitalHomeBE.models.familiar import Familiar
 
 class FamiliarSerializer(serializers.ModelSerializer):
-    class Meta:
-        models= Familiar
-        fields=['parentezco', 'usuario']
+    class Meta:       
+        model= Familiar
+        fields=('id', 'parentezco', 'usuario')
