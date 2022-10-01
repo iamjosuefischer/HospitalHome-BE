@@ -1,60 +1,36 @@
-from rest_framework import generics, status
+from rest_framework import status, views
 from rest_framework.response import Response
-#from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from HospitalHomeBE.serializers.familiarSerializer import FamiliarSerializer
-from HospitalHomeBE.serializers.usuarioSerializer import UsuarioSerializer
 from HospitalHomeBE.models.familiar import Familiar
 
-class FamiliarListCreateView(generics.ListCreateAPIView):
-    queryset = Familiar.objects.all()
-    serializer_class = FamiliarSerializer
-    #permission_classes = (IsAuthenticated,)
+class FamiliarCrearView(views.APIView):
+    def post(self, request, format=None):
+        serializador=FamiliarSerializer(data=request.data)
+        if serializador.is_valid():
+            serializador.save()
+            return Response (serializador.data, status=status.HTTP_201_CREATED)
+        return Response (serializador.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def list(self, request):
-        print("GET a todos los Familiares")
-        queryset = self.get_queryset()
-        serializer = FamiliarSerializer(queryset, many=True)
-        return Response(serializer.data)
+    def get(self, request, format=None):
+        modelo=Familiar.objects.all()
+        serializar=FamiliarSerializer(modelo, many=True)
+        return Response (serializar.data)
 
-    def post(self, request, *args, **kwargs):
-        print("POST a Familiar")
-        print(request.data)
-        usuarioData = request.data.pop('usuario')
-        serializerU  = UsuarioSerializer(data=usuarioData)
-        serializerU.is_valid(raise_exception=True)
-        usuario = serializerU.save()
-        fData = request.data
-        fData.update({"usuario":usuario.id})
-        serializerF = FamiliarSerializer(data=fData)
-        serializerF.is_valid(raise_exception=True)
-        serializerF.save()
-        return Response(status=status.HTTP_201_CREATED)
+class ConsultarFamiliarView (views.APIView):
+    def put (self, request, pk, format=None):
+        modelo=Familiar.objects.get(pk=pk)
+        serializacion=FamiliarSerializer(modelo, data=request.data)
+        if serializacion.is_valid():
+            serializacion.save()
+            return Response (serializacion.data)
+        return Response(serializacion.errors, status=status.HTTP_400_BAD_REQUEST)
 
-        """ tokenData = {
-                     "username":request.data["username"],
-                     "password":request.data["password"]
-                    }
-        tokenSerializer = TokenObtainPairSerializer(data=tokenData)
-        tokenSerializer.is_valid(raise_exception=True)
-        return Response(tokenSerializer.validated_data, status=status.HTTP_201_CREATED) """
+    def delete(self, request, pk, format=None):
+        modelo=Familiar.objects.get(pk=pk)
+        modelo.delete()
+        return Response (status=status.HTTP_204_NO_CONTENT)
 
-class FamiliarRetrieveUpdateView(generics.RetrieveUpdateAPIView):
-    queryset = Familiar.objects.all()
-    serializer_class = FamiliarSerializer
-    lookup_field = "id"             # campo con el que se realiza la búsqueda de los objetos
-    lookup_url_kwarg = 'pk'         # nombre dado en la url al argumento
-    #permission_classes = (IsAuthenticated,)
-
-    def get(self, request, *args, **kwargs):
-        print("GET a Familiar")
-        """ if valid_data['user_id'] != kwargs['pk']:
-            stringResponse = {'detail':'Unauthorized Request'}
-            return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED) """
-        return super().get(request, *args, **kwargs)
-
-    def put(self, request, *args, **kwargs):
-        print("PUT a Familiar")
-        """ if valid_data['user_id'] != kwargs['pk']:
-            stringResponse = {'detail':'Unauthorized Request'}
-            return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED) """
-        return super().put(request, *args, **kwargs)
+    def get(self, request, pk, format=None):
+        modelo=Familiar.objects.get(pk=pk)
+        serializar= FamiliarSerializer(modelo)
+        return Response (serializar.data)

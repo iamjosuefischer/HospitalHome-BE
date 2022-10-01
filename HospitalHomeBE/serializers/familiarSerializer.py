@@ -5,4 +5,4 @@ from HospitalHomeBE.models.familiar import Familiar
 class FamiliarSerializer(serializers.ModelSerializer):
     class Meta:       
         model= Familiar
-        fields=('id', 'parentezco', 'usuario')
+        fields=('parentezco', 'usuario')
