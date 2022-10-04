@@ -1,14 +1,11 @@
 from django.db import models
-from HospitalHomeBE.models.paciente import Paciente
+from.paciente import Paciente
 
-class Historia(models.Model):
-    id= models.BigAutoField(primary_key=True)
-    paciente= models.ForeignKey(Paciente, on_delete=models.CASCADE)
-    oximetria= models.JSONField(null=True)
-    f_respiratoria= models.JSONField(null=True)
-    f_cardiaca= models.JSONField(null=True)
-    temperatura= models.JSONField(null=True)
-    presion_arterial= models.JSONField(null=True)
-    glicemias= models.JSONField(null=True)
-    diagnostico= models.TextField(null=True)
-    cuidados= models.TextField(null=True)
+class Historia_clinica(models.Model):
+    id_histclinica=models.AutoField(primary_key=True)
+    id_paciente=models.ForeignKey(Paciente,related_name='histclinica', on_delete=models.CASCADE)
+    sugerencias=models.CharField('Sugerencias', max_length=300)
+    diagnostico=models.CharField('Diagnostico', max_length=300)
+    entorno=models.CharField('Entorno', max_length=300)
+    fecha_sugerencia=models.DateField()
+    descripcion=models.CharField('Descripcion', max_length=300)

@@ -1,8 +1,7 @@
+from HospitalHomeBE.models.psalud import Personal_salud
 from rest_framework import serializers
-from HospitalHomeBE.models.historia import Historia
 
-
-class HistoriaSerializer(serializers.ModelSerializer):
+class PersonalSaludSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Historia
-        fields=['paciente', 'oximetria', 'f_respiratoria', 'f_cardiaca', 'temperatura', 'presion_arterial', 'glicemias', 'diagnostico' ,'cuidados']
+        model=Personal_salud
+        fields=('username','rol','especialidad')
