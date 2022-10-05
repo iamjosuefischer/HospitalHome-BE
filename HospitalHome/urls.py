@@ -15,18 +15,19 @@ Including another URLconf
 """
 from HospitalHomeBE import views
 from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
+from HospitalHomeBE.views.createFamiliarView import CrearFamiliarView
 from django.contrib import admin
 from django.urls import path
-
-   
+  
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('login/', TokenObtainPairView.as_view()),
     path('refresh/', TokenRefreshView.as_view()),
-    path('usuario/', views.CrearUsuarioView.as_view()),
-    path('psalud/', views.CrearPsaludView.as_view()),
-    path('paciente/', views.CrearPacienteView.as_view()),
-    path('familiar/', views.CrearFamiliarView.as_view()),
-    path('historia/', views.CrearHistclinicaView.as_view()),
-    path('sigvitales/', views.CrearSigvitalesView.as_view()),
+    path('user/', views.CrearUserView.as_view()),
+    path('personalSalud/', views.CrearPSaludView.as_view()),
+    path('Familiar/', views.CrearFamiliarView.as_view()),
+    path('Paciente/', views.CrearPacienteView.as_view()),
+    path('SignosVitales/', views.CrearSigVitalesView.as_view()),
+    path('ConsultaUsuario/<int:pk>', views.ConsultUserView.as_view()),
+    path('ConsultarFamiliar/<int:pk>', views.ConsultFamiliarView.as_view()),
+    path('ConsultarPaciente/<int:pk>', views.ConsultPacienteView.as_view())
 ]

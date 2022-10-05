@@ -1,10 +1,10 @@
 from django.db import models
-from .usuario import Usuario   
+from .user import User
 from .paciente import Paciente
 
-
 class Familiar(models.Model):
-    id= models.BigAutoField(primary_key=True)
-    username = models.ForeignKey(Usuario, related_name='familiar', on_delete=models.CASCADE)
-    parentesco = models.CharField('Parentesco', max_length=30)
-    correo = models.EmailField('Correo', max_length=80)
+    id = models.AutoField(primary_key = True)
+    iduser = models.ForeignKey(User, related_name = 'familiar', on_delete = models.CASCADE)
+    idPaciente = models.ForeignKey(Paciente, related_name = 'familiar', on_delete = models.CASCADE)
+    parentesco = models.CharField('Parentesco', max_length =40)
+    correo = models.EmailField('correo', max_length= 100)

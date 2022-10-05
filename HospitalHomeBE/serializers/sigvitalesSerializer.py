@@ -1,7 +1,8 @@
-from HospitalHomeBE.models.sigvitales import Signos_vitales
+from pyexpat import model
+from HospitalHomeBE.models.sigVitales import SigVitales
 from rest_framework import serializers
 
-class SignosVitalesSerializers(serializers.ModelSerializer):
+class SigVitalesSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Signos_vitales
-        fields=('id_paciente','oximetria','frecuenciaRespiratoria','frecuenciaCardiaca','temperatura','glicemias','presionArterial','fechaHora')
+        model = SigVitales
+        fields = ('idPaciente', 'oximetria', 'fRespiratiria', 'fCardiaca', 'temperatura', 'glicemias', 'pArterial', 'fechaHora')
