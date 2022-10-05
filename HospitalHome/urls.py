@@ -13,25 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from HospitalHomeBE import views
+from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
 from django.contrib import admin
 from django.urls import path
-from HospitalHomeBE import views
 
+   
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('user/', views.UsuarioListView.as_view()),  
-    path('user/<int:pk>/', views.UsuarioRetrieveUpdateDeleteView.as_view()),  
-    path('medico/', views.MedicoListCreateView.as_view()),  
-    path('medico/<int:pk>/', views.MedicoRetrieveUpdateView.as_view()),
-    path('paciente/', views.PacienteCrearView.as_view()),
-    path('paciente/<int:pk>/', views.Consultar_PacienteView.as_view()),
-    path('userlogin/', views.usercreateview.as_view()),
-    path ('familiar/', views.FamiliarCrearView.as_view()),
-    path('familiar/<int:pk>/', views.ConsultarFamiliarView.as_view()),
-    path ('enfermero/', views.EnfermeroCrearView.as_view()),
-    path('enfermero/<int:pk>/', views.ConsultarEnfermeroView.as_view()),
-    path('historia/', views.HistoriaCrearView.as_view()),
-    path('historia/<int:pk>/', views.ConsultarHistoriaView.as_view()),
-    path ('rol/', views.RolCrearView.as_view()),
-    path('rol/<int:pk>/', views.Consultar_RolView.as_view()),
+    path('login/', TokenObtainPairView.as_view()),
+    path('refresh/', TokenRefreshView.as_view()),
+    path('usuario/', views.CrearUsuarioView.as_view()),
+    path('psalud/', views.CrearPsaludView.as_view()),
+    path('paciente/', views.CrearPacienteView.as_view()),
+    path('familiar/', views.CrearFamiliarView.as_view()),
+    path('historia/', views.CrearHistclinicaView.as_view()),
+    path('sigvitales/', views.CrearSigvitalesView.as_view()),
 ]

@@ -1,8 +1,7 @@
+from HospitalHomeBE.models.historia import Historia_clinica
 from rest_framework import serializers
-from HospitalHomeBE.models.historia import Historia
-
 
 class HistoriaSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Historia
-        fields=['paciente', 'oximetria', 'f_respiratoria', 'f_cardiaca', 'temperatura', 'presion_arterial', 'glicemias', 'diagnostico' ,'cuidados']
+        model=Historia_clinica
+        fields=('id_paciente','sugerencias','diagnostico','entorno','fecha_sugerencia''descripcion')

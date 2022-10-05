@@ -1,7 +1,8 @@
-from rest_framework import serializers
 from HospitalHomeBE.models.usuario import Usuario
+from rest_framework import serializers
+
 
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Usuario
-        fields = ['id', 'rol', 'username', 'password','nombre','apellido','e_mail','celular','direccion']
+        model=Usuario
+        fields=('username','password','perfil','nombre','apellidos','telefono','direccion')
