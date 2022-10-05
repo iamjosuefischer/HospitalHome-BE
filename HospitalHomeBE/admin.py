@@ -1,14 +1,15 @@
 from django.contrib import admin
-from .models.usuario import Usuario
-from .models.psalud import Personal_salud
-from .models.paciente import Paciente
+from .models.user import User
+from .models.sigVitales import SigVitales
 from .models.familiar import Familiar
-from .models.sigvitales import Signos_vitales
-from .models.historia import Historia_clinica
-
-admin.site.register(Usuario)
-admin.site.register(Personal_salud)
-admin.site.register(Paciente)
+from .models.hClinica import HisClinica
+from .models.paciente import Paciente
+from .models.pSalud import PersonalSalud
+from .models.sigVitales import SigVitales
+# Register your models here.
+admin.site.register(User)
 admin.site.register(Familiar)
-admin.site.register(Signos_vitales)
-admin.site.register(Historia_clinica)
+admin.site.register(HisClinica)
+admin.site.register(Paciente)
+admin.site.register(PersonalSalud)
+admin.site.register(SigVitales)

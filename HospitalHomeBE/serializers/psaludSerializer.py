@@ -1,8 +1,8 @@
-
-from HospitalHomeBE.models.psalud import Personal_salud
+from pyexpat import model
+from HospitalHomeBE.models.pSalud import PersonalSalud
 from rest_framework import serializers
 
-class PersonalSaludSerializer(serializers.ModelSerializer):
+class PerSaludSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Personal_salud
-        fields=('username','rol','especialidad')
+        model = PersonalSalud
+        fields = ('iduser', 'rol', 'especialidad')

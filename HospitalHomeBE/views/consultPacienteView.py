@@ -9,5 +9,6 @@ from HospitalHomeBE.serializers.pacienteSerializer import PacienteSerializer
 class ConsultPacienteView(generics.RetrieveAPIView):
     queryset = Paciente.objects.all()
     serializer_class = PacienteSerializer
+    
     def get(self, request, *args, **kwargs):
             return super().get(request, *args, **kwargs)
