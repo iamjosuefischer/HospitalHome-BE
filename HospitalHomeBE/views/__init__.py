@@ -4,3 +4,6 @@ from .PsaludCreateView import CrearPsaludView
 from .PacienteCreateView import CrearPacienteView
 from .HistoriaCreateView import CrearHistclinicaView
 from .SigVitalesCreateView import CrearSigvitalesView
+from .consultarUsuarioView import ConsultUserView
+from .consultarFamiliarView import ConsultFamiliarView
+from .consultarPacienteView import ConsultPacienteView
