@@ -1,8 +1,8 @@
-from string import printable
-from rest_framework import serializers
-from HospitalHomeBE.models.psalud import Medico
 
-class MedicoSerializer(serializers.ModelSerializer):
+from HospitalHomeBE.models.psalud import Personal_salud
+from rest_framework import serializers
+
+class PersonalSaludSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Medico
-        fields = ['id', 'especialidad', 'registro', 'usuario']
+        model=Personal_salud
+        fields=('username','rol','especialidad')

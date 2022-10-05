@@ -2,7 +2,7 @@ from django.db import models
 from.paciente import Paciente
 
 class Historia_clinica(models.Model):
-    id_histclinica=models.AutoField(primary_key=True)
+    id= models.BigAutoField(primary_key=True)
     id_paciente=models.ForeignKey(Paciente,related_name='histclinica', on_delete=models.CASCADE)
     sugerencias=models.CharField('Sugerencias', max_length=300)
     diagnostico=models.CharField('Diagnostico', max_length=300)

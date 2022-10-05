@@ -3,7 +3,7 @@ from .paciente import Paciente
 
 
 class Signos_vitales(models.Model):
-    id_sigvitales = models.AutoField(primary_key=True)
+    id = models.BigAutoField(primary_key=True)
     id_paciente = models.ForeignKey(Paciente, related_name='sigvitales', on_delete=models.CASCADE)
     oximetria = models.CharField('SugerenciasOximetria', max_length=30)
     frecuenciaRespiratoria = models.CharField('Frecuencia_respiratoria', max_length=30)
